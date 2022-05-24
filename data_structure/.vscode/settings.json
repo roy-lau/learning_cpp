@@ -1,0 +1,15 @@
+{
+  "files.associations": {
+    "*.styl": "stylus",
+    "stdio.h": "c",
+    "__config": "c",
+    "stdlib.h": "c",
+    "string.h": "c",
+    "_types.h": "c",
+    "cdefs.h": "c",
+    "availability.h": "c",
+    "_null.h": "c",
+    "_size_t.h": "c",
+    "time.h": "c"
+  }
+}
