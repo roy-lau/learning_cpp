@@ -1,0 +1,7 @@
+{
+  "files.associations": {
+    "*.styl": "stylus",
+    "stdio.h": "c",
+    "string.h": "c"
+  }
+}

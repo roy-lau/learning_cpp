@@ -1,5 +1,7 @@
 # learning_cpp
 
+[参考手册](https://zh.cppreference.com/)
+
 c&amp;&amp;cpp 学习相关的代码
 
 ## [c 语言基础](./c_base/)
