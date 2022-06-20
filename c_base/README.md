@@ -271,3 +271,23 @@ int g(int (*f1)(int), int (*f2)(int), int (*f3)(int), int x){
 
 > sizeof() 返回的单位是字节。 sizeof(int) 默认返回的是 4 字节，但和操作系统是 32 或 64 位有关，也和编译器是多少位有关。
 
+### 字符
+
+**在 c 语言中只有字符类型，没有字符串类型**
+
+- 字符串相关的操作
+
+头文件： `string.h`
+
+| | |
+|-|-|
+|函数|说明
+|`strlen(str)`| 字符串长度，以 `\0` 为结束符
+|`strcmp(str1,str2)`| 字符串比较
+|`strcpy(dest,src)`| 字符串拷贝
+|`strncmp(str1,str2,n)`| 安全的字符串比较
+|`strncpy(str1,str2,n)`| 安全的字符串拷贝
+|`memcmy(str1,str2,n)`| 内存比较
+|`memcpy(str1,str2,n)`| 内存拷贝
+|`memcpy(str1,c,n)`| 内存设置
+
