@@ -150,7 +150,7 @@ x: 某个实数 <br />
 头文件: math.h <br />
 原型: `double log(double x);` <br />
 x: 某个实数 <br />
-返回值：返回 $ log{_e x} $ 结果 <br />
+返回值：返回 $log{_e x}$ 结果 <br />
 例子： log(9)=2.197225…… <br />
 
 #### log10 函数：以 10 为底对数函数
@@ -158,7 +158,7 @@ x: 某个实数 <br />
 头文件: math.h <br />
 原型: `double log10(double x);` <br />
 x: 某个实数 <br />
-返回值：返回 $ log{10^x} $ 结果 <br />
+返回值：返回 $log{10^x}$ 结果 <br />
 例子： log10(1000)=3 <br />
 
 
@@ -291,3 +291,134 @@ int g(int (*f1)(int), int (*f2)(int), int (*f3)(int), int x){
 |`memcpy(str1,str2,n)`| 内存拷贝
 |`memcpy(str1,c,n)`| 内存设置
 
+## 第六课
+
+### 预处理命令-宏定义
+
+```c
+// 定义符号常量
+#define PI 3.1415926
+#defile MAX_N 100
+
+// 定义简单的表达式
+#defile MAX(a,b) (a) > (b)
+#defile S(a,b) a * b
+
+// 定义代码段
+#defile P(a) { \
+  printf("%d\n", a); \
+}
+```
+
+### 预处理命令-预定义的宏
+
+| | |
+|-|-|
+|宏|说明
+|`__DATE__`| 日期: Mmm dd yy
+|`__TIME__`| 时间: hh:mm:ss
+|`__LINE__`| 行号
+|`__FILE__`| 文件名
+|`__func__`| 函数名(非标准)
+|`__FUNC__`| 函数名(非标准)
+|`__PRETTY_FUNCTION__`| 更详细的函数信息(非标准)
+
+### 预处理命令-条件式编译
+
+| | |
+|-|-|
+|函数|说明
+|`#ifdef DEBUG`| 是否定义 DEBUG 宏
+|`#ifndef DEBUG`| 是否没定义 DEBUG 宏
+|`#if MAX_N == 5`| 宏 MAX_N 是否等于 5
+|`#elif MAX_N == 4`| 否则宏 MAX_N 是否等于 4
+|`#else`|
+|`#endif`|
+
+### 编译流程
+
+c源码 --> 预处理(将头文件和宏替换为代码) --> 编译源码 --> 对象文件(`.o` 或 `.obj`) --> 可执行程序(链接文件)
+
+### 结构体
+
+<img src="https://pic3.zhimg.com/v2-57edd68ab9c2944e49bb861c563d80da_1440w.jpg" alt="c 语言基本数据类型" title="c 语言基本数据类型">
+
+> 结构体本质是一种自定义类型
+
+```c
+struct person {
+  char name[20]; // 姓名
+  int age; // 年龄
+  char gender; // 性别
+  float height; // 身高
+};
+// 上面结构体占用 32 个字节
+// 最大的是 int，4 个字节为一块
+// char name[20]; 5 块
+// int age; 1 块
+// char gender; 1 块
+// float height; 1 块
+// 计算： ( 5+1+1+1 ) * 4 = 32字节
+```
+
+- 直接引用 `.`
+- 间接引用 `->`
+
+**结构体空间大小：先找到结构体中最大的一个数据类型，以最大的数据类型为基准块，每个变量都以最大的数据类型空间去申请内存。**
+
+### 共用体
+
+```c
+union register {
+  struct {
+    unsigned char byte1;
+    unsigned char byte2;
+    unsigned char byte3;
+    unsigned char byte4;
+  } bytes;
+  unsigned int numbers;
+}
+```
+
+- 匿名结构体只能使用一次。
+
+
+### 指针
+
+> 指针变量也是变量
+
+在 64 位操作系统中，指针变量占 8 字节
+在 32 位操作系统中，指针变量占 4 字节
+在 16 位操作系统中，指针变量占 2 字节
+
+### typedef 用法
+
+> 类型重命名
+
+```c
+// 内建类型的重命名
+typedef long long lint;
+typedef char *pchar;
+
+// 结构体类型重命名
+typedef struct ___node {
+  int x, y;
+} Node, *pNode;
+
+// 函数指针命名
+typedef int (*func)(int);
+```
+
+### main 函数
+
+```c
+/**
+ * @brief 主函数
+ * 
+ * @param argc 命令行参数个数
+ * @param argv 具体的命令行参数
+ * @param env 环境变量
+ * @return int 
+ */
+int main(int argc, char *argv[], char **env);
+```
