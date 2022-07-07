@@ -26,7 +26,7 @@
   * @param n 点
   * @param m 边
   * @param s 起点
-  * @param arr 二维数组
+  * @param arr 邻接矩阵
   * @param ans 结果数组
   * @param mark 标记数组
   */
