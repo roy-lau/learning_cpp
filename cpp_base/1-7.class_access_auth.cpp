@@ -1,5 +1,5 @@
 /**
- * @file 1-7.class.c
+ * @file 1-7.class_access_auth.c
  * @author RoyLau (897379293@qq.com)
  * @brief cpp 类和成员类型
  * @version 0.1
