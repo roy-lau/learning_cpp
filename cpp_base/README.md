@@ -218,3 +218,102 @@ class node {
 2. 构造函数（有参，无参，拷贝）
 3. 运算符重载（`< > == >= <= != + += [] ()`）
 4. 使用 `cin/cout` 输入输出
+
+## STL 容器的使用
+
+STL：标准模板库
+
+1. 容器
+2. 适配器
+3. 算法
+4. 迭代器
+5. 仿函数
+6. 分配器
+
+### 容器的使用
+
+- [`vector` 向量（动态数组）](./2-1.vector.cpp)
+> 向量是一个容器  https://zh.cppreference.com/w/cpp/container/vector
+
+```cpp
+#include <vector>
+
+vector<int> v; // vector 类，<int> 模板参数， v 对象
+
+// 向量的操作
+v.size();       // 返回元素数量
+v.push_back(x); // 向动态数组末尾加入 x 元素
+v.pop_back(); // 将最后一个元素移除
+v[i];         // 访问下标为 i 的元素
+v.empty();    // 判断是否为空
+v.resize(x);  // 将容器调整为 x
+```
+
+- [`stack` 栈](./2-2.stack.cpp)
+> 栈实际上是一个适配器(适配器是容器的二次封装)，底层是个双端队列的二次封装
+
+```cpp
+#include <stack>
+
+stack<int> s; // stack 类，<int> 模板参数， s 对象
+
+// 栈的操作
+s.size();   // 返回元素数量
+s.push(x);  // 向栈顶加入元素 x
+s.pop();    // 删除栈顶元素
+s.top();    // 获得栈顶元素
+s.empty();  // 栈是否为空
+```
+
+- [`queue` 队列](./2-3.queue.cpp)
+> 队列实际上是一个适配器(适配器是容器的二次封装)，底层是个双端队列的二次封装
+
+```cpp
+#include <queue>
+
+queue<int> q; // queue 类，<int> 模板参数， q 对象
+
+// 队列的操作
+q.size();  // 返回元素数量
+q.push(x); // 向队尾加入元素 x
+q.pop();   // 弹出队首元素
+q.fornt(); // 访问队首元素
+q.back();  // 访问队尾元素
+q.empty(); // 队列是否为空
+```
+
+- [`deque` 双端队列](./2-4.deque.cpp)
+https://zh.cppreference.com/w/cpp/container/deque
+> 双端队列内部是非线性的
+
+```cpp
+#include <deque>
+
+deque<int> d; // deque 类，<int> 模板参数， d 对象
+
+// 双端队列的操作
+d.size();  // 返回元素数量
+d.push_front(x); // 向队首加入元素 x
+d.push_back(x); // 向队尾加入元素 x
+d.pop_front(); // 弹出队首元素
+d.pop_back(); // 弹出队尾元素
+d.fornt(); // 访问队首元素
+d.back();  // 访问队尾元素
+d.empty(); // 队列是否为空
+```
+
+- [`priority_deque` 优先队列](./2-5.priority_deque.cpp)
+> 优先队列也就是堆，用数组模拟的完全二叉树。
+
+```cpp
+#include <deque>
+
+priority_deque<int> d; // priority_deque 类，<int> 模板参数， d 对象
+
+// 优先队列的操作（默认是大顶堆）
+d.size();  // 返回元素数量 O(1)
+d.push(x); // 向堆加入元素 x, O(logN)
+d.pop(); // 弹出堆顶元素 O(logN)
+d.top();  // 获得堆顶元素 O(1)
+d.empty(); // 堆是否为空 O(1)
+```
