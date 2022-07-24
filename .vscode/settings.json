@@ -7,6 +7,14 @@
     "stdlib.h": "c",
     "__locale": "c",
     "ios": "c",
-    "time.h": "c"
+    "time.h": "c",
+    "algorithm": "cpp",
+    "string": "cpp",
+    "vector": "cpp",
+    "ostream": "cpp",
+    "deque": "cpp",
+    "queue": "cpp",
+    "set": "cpp",
+    "map": "cpp"
   }
 }
