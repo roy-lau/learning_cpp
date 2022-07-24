@@ -59,6 +59,9 @@ int main(){
 - `ios_base::sync_with_stdio(false);` 解除与 c 风格输入输出同步
 - `cin.tie(NULL);` 解除 `cin` 与 `cout` 同步
 
+
+
+
 ## 类与对象
 
 ### [引用](./1-2.c_cpp_cite.cpp)
@@ -219,6 +222,9 @@ class node {
 3. 运算符重载（`< > == >= <= != + += [] ()`）
 4. 使用 `cin/cout` 输入输出
 
+
+
+
 ## STL 容器的使用
 
 STL：标准模板库
@@ -227,10 +233,12 @@ STL：标准模板库
 2. 适配器
 3. 算法
 4. 迭代器
-5. 仿函数
+5. [仿函数](./2-5.priority_queue.cpp)
 6. 分配器
 
-### 容器的使用
+### 容器
+
+#### 有序容器
 
 - [`vector` 向量（动态数组）](./2-1.vector.cpp)
 > 向量是一个容器  https://zh.cppreference.com/w/cpp/container/vector
@@ -316,4 +324,88 @@ d.push(x); // 向堆加入元素 x, O(logN)
 d.pop(); // 弹出堆顶元素 O(logN)
 d.top();  // 获得堆顶元素 O(1)
 d.empty(); // 堆是否为空 O(1)
+```
+
+
+- [`set` 有序集合](./2-7.set.cpp)
+> 有序集合的作用有：排序，去重。经常用于判断某个元素是否在集合中，或者不在集合中。
+
+multiset: 多重有序集合
+
+```cpp
+#include <set>
+
+set<int> s; // set 类，<int> 模板参数， s 对象
+
+// 有序集合的操作
+s.size();  // 返回元素数量  O(1)
+s.insert(x); // 向集合插入元素 x  O(logN)
+s.erase(); // 清除元素  O(logN)
+s.find(x);  // 查找元素，返回一个迭代器  O(logN)
+s.count(x);  // 统计 x 的出现次数  O(1)
+s.empty(); // 堆是否为空  O(1)
+```
+
+- [`map` 有序映射](./2-8.map.cpp)
+> 有序映射的主要作用有：排序、去重和映射。对于 `map` 而言，`key` 是唯一的，`value` 可以重复。
+
+> `pair` 是对，也就是一对 `{key,value}`, `pair` 的 `frist` 对应 `key` , `second` 对应 `value`
+
+multimap: 多重有序映射
+
+```cpp
+#include <map>
+
+map<int,int> m; // map 类，<int,int> 模板参数<key,value>， m 对象
+
+// 映射的操作
+m.size();  // 返回元素数量  O(1)
+m.insert({x,y}); // 插入一组映射关系{key,value}  O(logN)
+m[x] = y; // 修改和插入  O(logN)
+m.erase(x); // 清除 key 为 x 的元素  O(logN)
+m.count(x);  // 统计 key 为 x 的元素出现次数  O(1)
+m.empty(); // 是否为空  O(1)
+```
+
+#### 无序容器
+> c++11（含）后才有无序容器
+
+- [`unordered_set` 无序集合](./2-9.unordered_set.cpp)
+> 无序集合内部是通过 hash 表实现的。
+模板参数：`unordered_set<key,hash,== >`   
+
+unordered_multiset: 多重无序集合
+
+```cpp
+#include <unordered_set>
+
+unordered_set<int> us; // unordered_set 类，<int> 模板参数， us 对象
+
+// 无序集合的操作
+s.size();     // 返回元素数量  O(1)
+s.insert(x);  // 向集合插入元素 x  O(1)
+s.erase();    // 清除元素  O(1)
+s.find(x);    // 查找元素，返回一个迭代器  O(1)
+s.count(x);   // 统计 x 的出现次数  O(1)
+s.empty();    // 堆是否为空  O(1)
+```
+
+- [`unordered_map` 无序映射](./2-10.unordered_map.cpp)
+> 无序映射内部是通过 hash 表实现的。
+模板参数：`unordered_map<key,value,hash,== >`  
+
+unordered_multimap: 多重无序映射
+
+```cpp
+#include <unordered_map>
+
+unordered_map<key,value> um; // unordered_map 类，<key,value> 模板参数， um 对象
+
+// 无序映射的操作
+um.size();     // 返回元素数量  O(1)
+um.insert(x);  // 向集合插入元素 x  O(1)
+um[x] = y;     // 修改和插入
+um.erase();    // 清除元素  O(1)
+um.count(x);   // 统计 x 的出现次数  O(1)
+um.empty();    // 堆是否为空  O(1)
 ```
