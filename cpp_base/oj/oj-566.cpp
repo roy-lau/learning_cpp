@@ -32,12 +32,12 @@ int main() {
       ans[ma[a]].push_back(b);
     }
   }
-  
+
   cout << endl;
-  for (auto &x : ans) {
-    cout << x[0];
-    for (int i = 1;i < x.size();i++) {
-      cout << " " << x[i];
+  for (int i = 0; i < cnt;i++) {
+    cout << ans[i][0];
+    for (int j = 1;j < ans[i].size();j++) {
+      cout << " " << ans[i][j];
     }
     cout << endl;
   }
